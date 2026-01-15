@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SocialBoost - Purchase Services</title>
+    <link rel="stylesheet" href="socialmediapurchase.html" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      body {
+        background: linear-gradient(135deg, #f5f7fa 0%, #e4edf5 100%);
+        color: #333;
+        line-height: 1.6;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+
+      header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 0;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        margin-bottom: 40px;
+      }
+
+      .logo {
+        font-size: 28px;
+        font-weight: 700;
+        color: #4f46e5;
+        display: flex;
+        align-items: center;
+      }
+
+      .logo i {
+        text-decoration: none;
+        margin-right: 10px;
+      }
+
+      nav ul {
+        display: flex;
+        list-style: none;
+      }
+
+      nav li {
+        margin-left: 30px;
+      }
+
+      nav a {
+        text-decoration: none;
+        color: #4b5563;
+        font-weight: 500;
+        transition: color 0.3s;
+      }
+
+      nav a:hover {
+        color: #e58046;
+      }
+
+      .page-title {
+        text-align: center;
+        font-size: 2.5rem;
+        margin-bottom: 40px;
+        color: #1f2937;
+      }
+
+      .service-selection {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+        margin-bottom: 60px;
+      }
+
+      .service-option {
+        background: white;
+        border-radius: 16px;
+        padding: 30px;
+        text-align: center;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        transition: transform 0.3s ease;
+        cursor: pointer;
+      }
+
+      .service-option:hover {
+        transform: translateY(-10px);
+        border: 2px solid #4f46e5;
+      }
+
+      .service-option.selected {
+        border: 2px solid #4f46e5;
+        background: #f0f7ff;
+      }
+
+      .service-icon {
+        font-size: 50px;
+        color: #4f46e5;
+        margin-bottom: 20px;
+      }
+
+      .service-option h3 {
+        font-size: 1.5rem;
+        margin-bottom: 15px;
+        color: #1f2937;
+      }
+
+      .service-option p {
+        color: #6b7280;
+        margin-bottom: 20px;
+      }
+
+      .price {
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: #4f46e5;
+        margin-bottom: 20px;
+      }
+
+      .form-container {
+        background: white;
+        border-radius: 16px;
+        padding: 40px;
+        margin-bottom: 60px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+      }
+
+      .form-group {
+        margin-bottom: 25px;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 500;
+        color: #1f2937;
+      }
+
+      .form-group input,
+      .form-group select {
+        width: 100%;
+        padding: 14px;
+        border: 1px solid #d1d5db;
+        border-radius: 8px;
+        font-size: 1rem;
+        transition: border-color 0.3s;
+      }
+
+      .form-group input:focus,
+      .form-group select:focus {
+        outline: none;
+        border-color: #4f46e5;
+        box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+      }
+
+      .platform-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        gap: 15px;
+        margin: 20px 0;
+      }
+
+      .platform-option {
+        background: #f3f4f6;
+        border-radius: 8px;
+        padding: 15px;
+        text-align: center;
+        cursor: pointer;
+        transition: all 0.3s;
+      }
+
+      .platform-option:hover {
+        background: #e5e7eb;
+      }
+
+      .platform-option.selected {
+        background: #dbeafe;
+        border: 2px solid #4f46e5;
+      }
+
+      .platform-option i {
+        font-size: 24px;
+        margin-bottom: 8px;
+      }
+
+      .platform-option span {
+        font-size: 0.9rem;
+      }
+
+      .btn {
+        display: inline-block;
+        background: #4f46e5;
+        color: white;
+        padding: 14px 32px;
+        border-radius: 50px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        border: none;
+        cursor: pointer;
+        font-size: 1rem;
+        width: 100%;
+      }
+
+      .btn:hover {
+        background: #4338ca;
+        transform: translateY(-3px);
+        box-shadow: 0 10px 20px rgba(79, 70, 229, 0.2);
+      }
+
+      .total {
+        font-size: 1.5rem;
+        text-align: center;
+        margin: 30px 0;
+        padding: 20px;
+        background: #f0f7ff;
+        border-radius: 12px;
+        font-weight: 700;
+        color: #4f46e5;
+      }
+
+      footer {
+        text-align: center;
+        padding: 40px 0;
+        color: #6b7280;
+        border-top: 1px solid rgba(0, 0, 0, 0.05);
+      }
+
+      @media (max-width: 768px) {
+        header {
+          flex-direction: column;
+        }
+
+        nav ul {
+          margin-top: 20px;
+        }
+
+        nav li {
+          margin: 0 10px;
+        }
+
+        .page-title {
+          font-size: 2rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <div class="logo"><i class="fas fa-chart-line"></i> SocialBoost</div>
+        <nav>
+          <ul>
+            <li>
+              <a href="socialmediapurchase.html"
+                ><i class="fas fa-home"></i> Home</a
+              >
+            </li>
+            <li>
+              <a href="#"><i class="fas fa-shopping-cart"></i> Services</a>
+            </li>
+            <li>
+              <a href="#"><i class="fas fa-info-circle"></i> About</a>
+            </li>
+            <li>
+              <a href="#"><i class="fas fa-headset"></i> Support</a>
+            </li>
+          </ul>
+        </nav>
+      </header>
+
+      <h1 class="page-title">Select Your Service</h1>
+
+      <div class="service-selection">
+        <div class="service-option" onclick="selectService('accounts')">
+          <div class="service-icon">
+            <i class="fas fa-user-circle"></i>
+          </div>
+          <h3>Social Media Accounts</h3>
+          <p>Premium accounts with followers, likes, and verified status</p>
+          <div class="price">$49.99</div>
+        </div>
+
+        <div class="service-option" onclick="selectService('likes')">
+          <div class="service-icon">
+            <i class="fas fa-heart"></i>
+          </div>
+          <h3>Social Media Likes</h3>
+          <p>Real likes on your posts across all platforms</p>
+          <div class="price">$19.99</div>
+        </div>
+
+        <div class="service-option" onclick="selectService('followers')">
+          <div class="service-icon">
+            <i class="fas fa-users"></i>
+          </div>
+          <h3>Followers Package</h3>
+          <p>Real, active followers to boost your credibility</p>
+          <div class="price">$29.99</div>
+        </div>
+      </div>
+
+      <div class="form-container">
+        <h2 style="text-align: center; margin-bottom: 30px; color: #1f2937">
+          Order Details
+        </h2>
+
+        <div class="form-group">
+          <label>Select Platform</label>
+          <div class="platform-grid">
+            <div class="platform-option" onclick="selectPlatform('instagram')">
+              <i class="fab fa-instagram" style="color: #e1306c"></i>
+              <span>Instagram</span>
+            </div>
+            <div class="platform-option" onclick="selectPlatform('facebook')">
+              <i class="fab fa-facebook" style="color: #1877f2"></i>
+              <span>Facebook</span>
+            </div>
+            <div class="platform-option" onclick="selectPlatform('tiktok')">
+              <i class="fab fa-tiktok" style="color: #000"></i>
+              <span>TikTok</span>
+            </div>
+            <div class="platform-option" onclick="selectPlatform('youtube')">
+              <i class="fab fa-youtube" style="color: #ff0000"></i>
+              <span>YouTube</span>
+            </div>
+            <div class="platform-option" onclick="selectPlatform('twitter')">
+              <i class="fab fa-twitter" style="color: #1da1f2"></i>
+              <span>Twitter</span>
+            </div>
+            <div class="platform-option" onclick="selectPlatform('threads')">
+              <i class="fas fa-comment" style="color: #000"></i>
+              <span>Threads</span>
+            </div>
+            <div class="platform-option" onclick="selectPlatform('telegram')">
+              <i class="fab fa-telegram" style="color: #0088cc"></i>
+              <span>Telegram</span>
+            </div>
+            <div class="platform-option" onclick="selectPlatform('email')">
+              <i class="fas fa-envelope" style="color: #ea4335"></i>
+              <span>Email</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="target">Target Account/URL</label>
+          <input
+            type="text"
+            id="target"
+            placeholder="Enter your account username or URL"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="quantity">Quantity</label>
+          <input type="number" id="quantity" min="1" value="1000" />
+        </div>
+
+        <div class="form-group">
+          <label for="delivery-time">Delivery Time</label>
+          <select id="delivery-time">
+            <option>Standard (24-48 hours)</option>
+            <option>Express (12 hours)</option>
+            <option>Priority (6 hours)</option>
+          </select>
+        </div>
+
+        <div class="total">Total: $49.99</div>
+
+        <button class="btn">Proceed to Payment</button>
+      </div>
+
+      <footer>
+        <p>&copy; 2023 SocialBoost. All rights reserved.</p>
+        <p>Premium Social Media Growth Services</p>
+      </footer>
+    </div>
+
+    <script>
+      let selectedService = null;
+      let selectedPlatform = null;
+
+      function selectService(service) {
+        // Remove selected class from all options
+        document.querySelectorAll(".service-option").forEach((el) => {
+          el.classList.remove("selected");
+        });
+
+        // Add selected class to clicked option
+        event.currentTarget.classList.add("selected");
+        selectedService = service;
+
+        // Update price based on selection
+        let price = 0;
+        switch (service) {
+          case "accounts":
+            price = 49.99;
+            break;
+          case "likes":
+            price = 19.99;
+            break;
+          case "followers":
+            price = 29.99;
+            break;
+        }
+
+        document.querySelector(".total").textContent = `Total: $${price.toFixed(
+          2
+        )}`;
+      }
+
+      function selectPlatform(platform) {
+        // Remove selected class from all options
+        document.querySelectorAll(".platform-option").forEach((el) => {
+          el.classList.remove("selected");
+        });
+
+        // Add selected class to clicked option
+        event.currentTarget.classList.add("selected");
+        selectedPlatform = platform;
+      }
+    </script>
+  </body>
+</html>

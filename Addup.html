@@ -1,0 +1,41 @@
+<div class="price" id="price-accounts">Loading...</div>
+<div class="price" id="price-likes">Loading...</div>
+<div class="price" id="price-followers">Loading...</div>
+<script>
+  async function loadPrices() {
+    const res = await fetch("http://127.0.0.1:8000/api/config");
+    const data = await res.json();
+
+    document.getElementById("price-accounts").innerText =
+      "$" + data.services.accounts;
+
+    document.getElementById("price-likes").innerText =
+      "$" + data.services.likes;
+
+    document.getElementById("price-followers").innerText =
+      "$" + data.services.followers;
+  }
+
+  loadPrices();
+</script>
+<script>
+  async function savePricing() {
+    const data = {
+      accounts: Number(
+        document.getElementById("instagram-accounts-price").value
+      ),
+      likes: Number(document.getElementById("instagram-likes-price").value),
+      followers: Number(
+        document.getElementById("instagram-followers-price").value
+      ),
+    };
+
+    await fetch("http://127.0.0.1:8000/api/pricing", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    });
+
+    alert("Saved! Refresh the frontend page.");
+  }
+</script>
